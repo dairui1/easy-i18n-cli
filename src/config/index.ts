@@ -15,7 +15,7 @@ const configSchema = z.object({
   entry: z.string(),
   entryType: z.enum(['directory', 'file']).optional().default('directory'),
   format: z.enum(['json', 'toml']).optional().default('json'),
-  concurrency: z.number().optional().default(1),
+  concurrency: z.number().optional().default(3),
   llmConfig: llmConfigSchema,
 });
 

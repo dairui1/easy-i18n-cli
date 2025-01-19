@@ -1,13 +1,13 @@
 {
   "name": "@easyi18n/cli",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "A CLI tool for translating your codebase into multiple languages.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "bin": {
-    "easy-i18n": "./dist/cli.js"
+    "easyi18n": "./dist/cli.js"
   },
   "exports": {
     "require": {

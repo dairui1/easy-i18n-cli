@@ -90,7 +90,7 @@ describe('Config Management', () => {
 
     const config = getConfig();
     expect(config.entryType).toBe('directory');
-    expect(config.concurrency).toBe(1);
+    expect(config.concurrency).toBe(3);
   });
 
   it('should throw validation error for invalid config', () => {

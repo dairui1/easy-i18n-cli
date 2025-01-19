@@ -62,7 +62,7 @@ async function translateSingleFile(filePath: string, targetLocale: string, targe
     localeJSON = stringifyFile(isString ? { [targetKey]: targetObj } : targetObj, format);
   }
 
-  const translatedJSON = await translateChunks(localeJSON, targetLocale);
+  const translatedJSON = await translateChunks(localeJSON, targetLocale, config.format);
   consola.success('Translation completed');
 
   return translatedJSON;
@@ -133,7 +133,7 @@ export async function translateDir(targetLocale: string, targetFile = '', target
         return;
       }
 
-      await mapLimit(targetFiles, config.concurrency || 1, async (file: string) => {
+      await mapLimit(targetFiles, config.concurrency, async (file: string) => {
         const filePath = path.join(config.entry, file);
         const translatedJSON = await translateSingleFile(filePath, targetLocale, targetKey);
         const targetFilePath = path.join(config.localeDir, targetLocale, file);

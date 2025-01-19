@@ -10,8 +10,20 @@ describe('Translation Core', () => {
       farewell: 'goodbye'
     });
 
-    const result = await translateChunks(input, 'cn');
+    const result = await translateChunks(input, 'cn', 'json');
     
+    expect(result).toEqual({
+      greeting: '你好',
+      farewell: '再见'
+    });
+  }, 30000); // 30 second timeout
+
+  it('should translate TOML correctly', async () => {
+    const input = `greeting = "hello"
+farewell = "goodbye"`;
+
+    const result = await translateChunks(input, 'cn', 'toml');
+
     expect(result).toEqual({
       greeting: '你好',
       farewell: '再见'

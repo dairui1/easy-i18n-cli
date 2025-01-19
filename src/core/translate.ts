@@ -3,8 +3,9 @@ import { getConfig } from "../config";
 import { chunkJson, parseLLMOutputForSchema } from '../utils/json';
 import { promptJsonTranslate } from './prompts';
 import consola from 'consola';
-import { parseFile } from '../utils/format';
+import { parseFile, SupportedFormat } from '../utils/format';
 import OpenAI from 'openai';
+import { mapLimit } from "async";
 
 /**
  * Maximum size of a chunk for translation.
@@ -78,9 +79,8 @@ function getInputParams(targetLocale: string): { from: string; to: string; } {
   return { from, to };
 }
 
-export async function translateChunks(content: string, targetLocale: string): Promise<any> {
+export async function translateChunks(content: string, targetLocale: string, format: SupportedFormat): Promise<any> {
   const config = getConfig();
-  const format = config.format || 'json';
   const { from, to } = getInputParams(targetLocale);
 
   try {
@@ -89,16 +89,20 @@ export async function translateChunks(content: string, targetLocale: string): Pr
     
     // Convert to JSON for chunking
     const jsonContent = JSON.stringify(parsedContent);
-    consola.debug('jsonContent', jsonContent);
+    
     const chunks = chunkJson(jsonContent, MAX_CHUNK_SIZE);
+
+    consola.info(`Chunking file into ${chunks.length} chunks`);
 
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
       baseURL: process.env.OPENAI_API_HOST || 'https://api.openai.com/v1'
     });
 
-    const translatedChunks = await Promise.all(
-      chunks.map(async (chunk) => {
+    const translatedChunks = await mapLimit(
+      chunks,
+      config.concurrency,
+      async (chunk: string) => {
         const prompt = promptJsonTranslate().replace('{from}', from).replace('{to}', to).replace('{json}', chunk);
 
         try {
@@ -113,6 +117,8 @@ export async function translateChunks(content: string, targetLocale: string): Pr
 
           const translatedText = completion.choices[0]?.message?.content;
 
+          consola.info(`[LLM Call]: ${config.llmConfig.model} - ${completion.usage?.prompt_tokens}/${completion.usage?.completion_tokens} tokens`);
+
           if (!translatedText) {
             throw new Error(`Invalid API response: ${JSON.stringify(completion)}`);
           }
@@ -122,8 +128,7 @@ export async function translateChunks(content: string, targetLocale: string): Pr
           consola.error('OpenAI API error:', error);
           throw error;
         }
-      })
-    );
+      });
 
     // Merge all chunks
     const mergedTranslation = translatedChunks.reduce((acc, chunk) => ({ ...acc, ...chunk }), {});

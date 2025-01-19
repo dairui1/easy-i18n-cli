@@ -12,7 +12,7 @@ export interface I18nCliConfig {
    * The format of the locale files.
    * @default 'json'
    */
-  format?: 'json' | 'toml';
+  format: 'json' | 'toml';
 
   /**
    * The path to the entry file or directory for processing.
@@ -26,13 +26,13 @@ export interface I18nCliConfig {
    * 'file' for a single file, 'directory' for a directory containing multiple files.
    * @default 'directory'
    */
-  entryType?: 'directory' | 'file';
+  entryType: 'directory' | 'file';
 
   /**
    * The number of concurrent operations to run.
-   * @default 1
+   * @default 3
    */
-  concurrency?: number;
+  concurrency: number;
 
   /**
    * Configuration for the Language Model (LLM) used in translation.
