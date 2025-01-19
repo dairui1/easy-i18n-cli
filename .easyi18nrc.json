@@ -1,0 +1,5 @@
+{
+  "localeDir": "example/toml",
+  "entry": "example/toml/en",
+  "format": "toml"
+}
