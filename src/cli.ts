@@ -5,31 +5,37 @@ import { translateDir } from './core/translateDir';
 import consola from 'consola';
 
 import dotenv from 'dotenv';
+import { initProject } from './core/init';
 
 // Initialize dotenv
 dotenv.config();
-
-// Ensure OPENAI_API_KEY is set
-if (!process.env.OPENAI_API_KEY) {
-  consola.error('OPENAI_API_KEY is not set in the environment variables.');
-  process.exit(1);
-}
 
 const program = new Command();
 
 program
   .version('0.1.0')
   .description('AI-powered i18n CLI tool')
+  .option('-i, --init', 'Initialize easyi18n configuration in the project')
   .option('-l, --locale <locale>', 'Target locale (use "all" for all locales)')
-  .option('-f, --file <file>', 'Target file')
-  .option('-k, --key <key>', 'Target key (optional)')
+  .option('-f, --file <file>', 'Target file, e.g.: common.json')
+  .option('-k, --key <key>', 'Target key, e.g.: home.title')
   .parse(process.argv);
 
 const options = program.opts();
 
 async function main() {
   consola.debug('Starting main function');
+  if (options.init) {
+    return initProject();
+  }
+
   if (options.locale) {
+    // Ensure OPENAI_API_KEY is set
+    if (!process.env.OPENAI_API_KEY) {
+      consola.error('OPENAI_API_KEY is not set in the environment variables.');
+      process.exit(1);
+    }
+
     const targetLocale = options.locale;
     const targetFile = options.file || '';
     const targetKey = options.key;

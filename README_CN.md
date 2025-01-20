@@ -8,40 +8,91 @@
 
 ## 使用方法
 
+### 安装
+
+```bash
+# 使用 npm
+npm install -g @easyi18n/cli
+
+# 使用 yarn
+yarn global add @easyi18n/cli
+
+# 使用 pnpm
+pnpm add -g @easyi18n/cli
+```
+
+### 快速开始
+
+```bash
+easyi18n --init
+```
+
+初始化后，将创建两个配置文件。请参考下面的配置说明来设置你的 API Key 和其他设置。如果在初始化过程中遇到任何问题，你可以按照配置说明手动配置。
+
 ### 配置
 
-@easyi18n/cli 使用 [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) 来支持配置文件。这意味着你可以通过多种方式进行配置：
+1. 在 `.env` 文件中设置你的环境变量：
 
-1. `package.json` 中的 `easyi18n` 属性
-2. JSON 或 YAML 格式的 `.easyi18nrc` 文件
-3. `.easyi18nrc.json`、`.easyi18nrc.yaml`、`.easyi18nrc.yml`、`.easyi18nrc.js`、`.easyi18nrc.ts`、`.easyi18nrc.mjs` 或 `.easyi18nrc.cjs` 文件
-4. `.config` 子目录下的 `easyi18nrc`、`easyi18nrc.json`、`easyi18nrc.yaml`、`easyi18nrc.yml`、`easyi18nrc.js`、`easyi18nrc.ts`、`easyi18nrc.mjs` 或 `easyi18nrc.cjs` 文件
-5. `easyi18n.config.js`、`easyi18n.config.ts`、`easyi18n.config.mjs` 或 `easyi18n.config.cjs` 文件
+```env
+OPENAI_API_KEY=your_api_key_here
+OPENAI_API_HOST=your_openai_api_host_here
+```
 
-配置文件应该导出一个包含你所需选项的对象。例如：
+2. 设置你的 easyi18n 配置文件：
+> @easyi18n/cli 使用 [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) 进行配置。你可以通过以下几种方式进行配置：
 
-## 开发路线
+1. (推荐)`easyi18n.config.js`、`easyi18n.config.ts`、`easyi18n.config.mjs` 或 `easyi18n.config.cjs` 文件
+2. `package.json` 中的 `easyi18n` 属性
+3. JSON 或 YAML 格式的 `.easyi18nrc` 文件
+4. `.easyi18nrc.json`、`.easyi18nrc.yaml`、`.easyi18nrc.yml`、`.easyi18nrc.js`、`.easyi18nrc.ts`、`.easyi18nrc.mjs` 或 `.easyi18nrc.cjs` 文件
 
-- [ ] 支持单文件和目录格式作为入口点
-- [ ] 通过自动检测入口格式（文件或目录）来简化配置
-- [ ] 添加用户友好的 CLI 提示以进行配置设置
-- [ ] 实现 `init` 命令以生成默认配置文件
-- [ ] 为每个配置选项提供清晰的文档和示例
-- [ ] 支持 react-i18next 示例项目
-- [ ] 在翻译过程中正确处理复杂的 ICU 模式（如复数、选择等）
-- [ ] 为 LLM 翻译输出实现 JSON 修复功能
-- [ ] 改进翻译过程的错误处理和报告
-- [ ] 添加对默认之外的自定义翻译服务的支持
+#### 配置示例
+`easyi18n.config.ts`:
+```ts
+import { defineConfig } from "@easyi18n/cli";
 
-## 本地开发
+// 详细字段说明请参考类型定义
+export default defineConfig({
+  localeDir: "src/locales",
+  entry: "src/locales/en",
+  format: "json",
+  concurrency: 5,
+  llmConfig: {
+    model: "gpt-4",
+    temperature: 0.3,
+  },
+});
+```
 
-1. 启动开发服务器：
-   ```
-   turbo dev --filter=@easyi18n/cli
-   ```
+`.easyi18nrc.json`:
+```json
+{
+  "localeDir": "src/locales/toml",
+  "entry": "src/locales/toml/en",
+  "format": "toml"
+}
+```
 
-2. 开始翻译：
-   ```
-   cd packages/easy-i18n-cli
-   node dist/cli.js -l all -f common
-   ```
+`llmConfig` 是可选的，如果你不设置它，@easyi18n/cli 将使用 llm 提供商的默认配置。
+
+### 翻译命令
+
+```bash
+# 翻译到特定语言
+easyi18n -l zh-CN
+
+# 翻译特定文件
+easyi18n -l zh-CN -f path/to/file
+
+# 翻译文件中的特定键
+easyi18n -l zh-CN -f path/to/file -k key.to.translate
+
+# 翻译到所有配置的语言
+easyi18n -l all
+```
+
+### 命令选项
+
+- `-l, --locale`: 目标语言（例如：'zh-CN'、'ja'、'ko'）或 'all' 表示所有语言
+- `-f, --file`: （可选）要翻译的目标文件
+- `-k, --key`: （可选）目标文件中要翻译的特定键

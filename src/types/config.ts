@@ -71,43 +71,38 @@ export interface EnvConfig {
    */
   OPENAI_API_HOST: string;
 
-  /**
-   * Flag to enable LangChain tracing v2.
-   */
-  LANGCHAIN_TRACING_V2: string;
+  // /**
+  //  * The endpoint URL for LangChain API.
+  //  */
+  // LANGCHAIN_ENDPOINT: string;
 
-  /**
-   * The endpoint URL for LangChain API.
-   */
-  LANGCHAIN_ENDPOINT: string;
+  // /**
+  //  * API key for authenticating with LangChain services.
+  //  */
+  // LANGCHAIN_API_KEY: string;
 
-  /**
-   * API key for authenticating with LangChain services.
-   */
-  LANGCHAIN_API_KEY: string;
+  // /**
+  //  * The identifier for the LangChain project being used.
+  //  */
+  // LANGCHAIN_PROJECT: string;
 
-  /**
-   * The identifier for the LangChain project being used.
-   */
-  LANGCHAIN_PROJECT: string;
+  // /**
+  //  * Flag to enable Langfuse tracing.
+  //  */
+  // LANGFUSE_TRACING: string;
 
-  /**
-   * Flag to enable Langfuse tracing.
-   */
-  LANGFUSE_TRACING: string;
+  // /**
+  //  * Secret key for authenticating with Langfuse services.
+  //  */
+  // LANGFUSE_SECRET_KEY: string;
 
-  /**
-   * Secret key for authenticating with Langfuse services.
-   */
-  LANGFUSE_SECRET_KEY: string;
+  // /**
+  //  * Public key for authenticating with Langfuse services.
+  //  */
+  // LANGFUSE_PUBLIC_KEY: string;
 
-  /**
-   * Public key for authenticating with Langfuse services.
-   */
-  LANGFUSE_PUBLIC_KEY: string;
-
-  /**
-   * The host URL for Langfuse services.
-   */
-  LANGFUSE_HOST: string;
+  // /**
+  //  * The host URL for Langfuse services.
+  //  */
+  // LANGFUSE_HOST: string;
 }
