@@ -39,7 +39,7 @@ describe('Config Management', () => {
     });
 
     const config = getConfig();
-    expect(config.llmConfig.model).toBe('anthropic/claude-3-5-sonnet');
+    expect(config.llmConfig.model).toBe('anthropic/claude-3.5-sonnet');
   });
 
   it('should set default model for Siliconflow API host', () => {

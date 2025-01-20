@@ -16,7 +16,7 @@ npm install -g @easyi18n/cli
 
 # Using yarn
 yarn global add @easyi18n/cli
-
+tr
 # Using pnpm
 pnpm add -g @easyi18n/cli
 ```
@@ -39,7 +39,7 @@ OPENAI_API_KEY=your_api_key_here
   "entryType": "directory",
   "concurrency": 3,
   "llmConfig": {
-    "model": "gpt-3.5-turbo",
+    "model": "gpt-4o",
     "temperature": 0.3,
     "maxRetries": 3
   }

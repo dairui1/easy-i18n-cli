@@ -71,7 +71,8 @@ function getInputParams(targetLocale: string): { from: string; to: string; } {
     az: 'Azerbaijani',
     kk: 'Kazakh',
     uz: 'Uzbek',
-    mn: 'Mongolian'
+    mn: 'Mongolian',
+    in: 'Hindi',
   };
 
   to = localeMap[targetLocale] || targetLocale;

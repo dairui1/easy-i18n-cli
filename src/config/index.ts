@@ -37,7 +37,7 @@ export const getConfig = () => {
       if (process.env.OPENAI_API_HOST?.includes('api.openai.com')) {
         config.llmConfig.model = 'gpt-4o';
       } else if (process.env.OPENAI_API_HOST?.includes('openrouter.ai')) {
-        config.llmConfig.model = 'anthropic/claude-3-5-sonnet';
+        config.llmConfig.model = 'anthropic/claude-3.5-sonnet';
       } else if (process.env.OPENAI_API_HOST?.includes('api.deepseek.com')) {
         config.llmConfig.model = 'deepseek-chat';
       } else if (process.env.OPENAI_API_HOST?.includes('siliconflow')) {
