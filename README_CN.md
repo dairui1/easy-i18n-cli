@@ -1,9 +1,9 @@
 # @easyi18n/cli
 
 <p align="center">
-  <a href="./README.md"><u>English</u></a>
+  <a href="https://github.com/dairui1/easy-i18n-cli/blob/main/README.md"><u>English</u></a>
   ·
-  <a href="./README_CN.md"><u>简体中文</u></a>
+  <a href="https://github.com/dairui1/easy-i18n-cli/blob/main/README_CN.md"><u>简体中文</u></a>
 </p>
 
 ## 使用方法
