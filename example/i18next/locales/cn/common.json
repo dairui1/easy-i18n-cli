@@ -3,7 +3,7 @@
     "welcome": "欢迎，{{username}}",
     "login": "登录",
     "signup": "注册",
-    "logout": "登出",
+    "logout": "退出",
     "settings": "设置",
     "profile": "个人资料",
     "search": "搜索",
@@ -13,8 +13,8 @@
     "theme": {
       "label": "主题",
       "options": {
-        "light": "明亮模式",
-        "dark": "黑暗模式",
+        "light": "浅色模式",
+        "dark": "深色模式",
         "system": "系统默认"
       }
     },
@@ -27,7 +27,7 @@
   "navigation": {
     "home": "首页",
     "about": "关于我们",
-    "contact": "联系",
+    "contact": "联系我们",
     "products": "产品",
     "services": "服务",
     "blog": "博客",
@@ -40,9 +40,9 @@
     "password": "密码",
     "forgot_password": "忘记密码？",
     "remember_me": "记住我",
-    "login_with": "使用{{provider}}登录",
+    "login_with": "使用 {{provider}} 登录",
     "create_account": "创建账户",
-    "already_have_account": "已经有账户？",
+    "already_have_account": "已有账户？",
     "password_strength": {
       "label": "密码强度",
       "weak": "弱",
@@ -50,29 +50,29 @@
       "strong": "强"
     },
     "verification_code": "输入验证码",
-    "resend_code": "{{seconds}}秒后重新发送代码"
+    "resend_code": "重新发送验证码（{{seconds}} 秒后）"
   },
   "errors": {
     "not_found": "页面未找到",
     "server_error": "内部服务器错误",
-    "unauthorized": "未授权访问",
+    "unauthorized": "未经授权",
     "validation_error": "验证错误",
     "network_error": "网络错误",
     "try_again": "请稍后再试",
-    "form_errors": "请纠正以下错误："
+    "form_errors": "请纠正以下错误"
   },
   "products": {
     "add_to_cart": "添加到购物车",
-    "remove_from_cart": "从购物车中移除",
+    "remove_from_cart": "从购物车移除",
     "out_of_stock": "缺货",
     "description": "描述",
-    "reviews": "评论 ({{count}})",
+    "reviews": "评论（{{count}}）",
     "related_products": "相关产品",
     "quantity": "数量",
     "stock": {
       "status": "库存状态",
       "in_stock": "有货",
-      "low_stock": "低库存",
+      "low_stock": "库存低",
       "out_of_stock": "缺货"
     }
   },
@@ -84,8 +84,7 @@
     "contact_us": "联系我们",
     "sitemap": "网站地图",
     "copyright": {
-      "text": "版权 © {{year}} {{companyName}}。保留所有权利。",
-      "company": "您的公司名称"
+      "text": "版权所有 © {{year}} {{companyName}}。保留所有权利。"
     }
   },
   "user": {
@@ -93,20 +92,20 @@
     "order_history": "订单历史",
     "wishlist": "愿望清单",
     "addresses": {
-      "shipping": "送货地址",
+      "shipping": "发货地址",
       "billing": "账单地址"
     },
     "payment_methods": "支付方式",
     "personal_info": "个人信息"
   },
   "checkout": {
-    "shipping_address": "送货地址",
+    "shipping_address": "发货地址",
     "billing_address": "账单地址",
     "payment_method": "支付方式",
     "order_summary": "订单摘要",
-    "place_order": "下订单",
-    "promo_code": "优惠码",
-    "total_items": "总商品数：{{count}}"
+    "place_order": "提交订单",
+    "promo_code": "促销码",
+    "total_items": "总计：{{count}}"
   },
   "support": {
     "customer_service": "客户服务",
@@ -114,10 +113,10 @@
     "ticket_system": "提交工单",
     "knowledge_base": "知识库",
     "faq_search": "搜索常见问题",
-    "contact_form": "联系表单",
+    "contact_form": "联系我们表单",
     "response_time": {
       "label": "平均响应时间",
-      "value": "{{time}}小时"
+      "value": "{{time}} 小时"
     }
   },
   "dates": {
@@ -128,8 +127,8 @@
     "last_week": "上周"
   },
   "notifications": {
-    "new_message": "您有来自{{sender}}的新消息",
-    "friend_request": "{{name}}向您发送了好友请求",
+    "new_message": "您收到一条来自 {{sender}} 的新消息",
+    "friend_request": "{{name}} 向您发送了好友请求",
     "clear_all": "清除所有通知",
     "mark_as_read": "标记为已读",
     "order_status": {
@@ -153,18 +152,18 @@
     "landing_page": "着陆页",
     "sidebar": "侧边栏",
     "footer": "页脚",
-    "header": "头部",
+    "header": "页头",
     "navigation": "导航",
     "menu": "菜单",
     "dropdown": "下拉菜单",
     "modal": "模态框",
     "popup": "弹出窗口",
-    "tooltip": "工具提示",
+    "tooltip": "提示",
     "placeholder": "占位符",
     "form_validation": "表单验证",
     "responsive_design": "响应式设计",
     "accessibility": "无障碍",
-    "seo": "搜索引擎优化 (SEO)",
+    "seo": "SEO（搜索引擎优化）",
     "analytics": "分析",
     "user_experience": "用户体验 (UX)",
     "user_interface": "用户界面 (UI)",
@@ -179,16 +178,16 @@
     "bandwidth": "带宽",
     "server": "服务器",
     "database": "数据库",
-    "api": "API (应用程序编程接口)",
+    "api": "API（应用程序编程接口）",
     "frontend": "前端",
     "backend": "后端",
     "full_stack": "全栈",
     "version_control": "版本控制",
-    "repository": "代码库",
-    "bug_tracking": "缺陷跟踪",
+    "repository": "仓库",
+    "bug_tracking": "错误跟踪",
     "agile_development": "敏捷开发",
     "scrum": "Scrum",
     "sprint": "冲刺",
-    "backlog": "待办事项"
+    "backlog": "待办事项列表"
   }
 }
