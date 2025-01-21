@@ -46,9 +46,9 @@ export const parseLLMOutputForSchema = async <T extends ZodSchema>(
     try {
       // Attempt to parse the JSON to check if it's valid
       JSON.parse(json);
-    } catch (error) {
+    } catch (error: any) {
       // Log the error if JSON parsing fails
-      consola.warn('Found invalid json, attempting to repair with jsonrepair...',);
+      consola.warn('Found invalid json, attempting to repair with jsonrepair...', error.message);
 
       // Attempt to repair the JSON using the jsonrepair library
       json = jsonrepair(json);

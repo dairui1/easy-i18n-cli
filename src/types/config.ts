@@ -55,6 +55,24 @@ export interface I18nCliConfig {
      */
     topP?: number | undefined;
   };
+
+  /**
+   * Configuration for translation prompts and guides
+   */
+  promptConfig?: {
+    /**
+     * Custom system prompt for the translation model
+     */
+    systemPrompt?: string;
+    /**
+     * Style guide for translation
+     */
+    styleGuide?: string[];
+    /**
+     * Glossary for translation terminology
+     */
+    glossary?: Record<string, string>;
+  };
 }
 
 /**

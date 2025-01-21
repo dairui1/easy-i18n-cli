@@ -10,6 +10,16 @@ const llmConfigSchema = z.object({
   topP: z.number().nullable().optional(),
 }).optional();
 
+const translationGuideSchema = z.object({
+  styleGuide: z.array(z.string()).optional(),
+  glossary: z.record(z.string()).optional(),
+}).optional();
+
+const promptConfigSchema = z.object({
+  systemPrompt: z.string().optional(),
+  translationGuide: translationGuideSchema,
+}).optional();
+
 const configSchema = z.object({
   localeDir: z.string(),
   entry: z.string(),
@@ -17,6 +27,7 @@ const configSchema = z.object({
   format: z.enum(['json', 'toml']).optional().default('json'),
   concurrency: z.number().optional().default(3),
   llmConfig: llmConfigSchema,
+  promptConfig: promptConfigSchema,
 });
 
 
