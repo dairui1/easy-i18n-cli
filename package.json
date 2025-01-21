@@ -9,6 +9,10 @@
   "bin": {
     "easyi18n": "./dist/cli.js"
   },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/dairui1/easy-i18n-cli"
+	},
   "exports": {
     "require": {
       "types": "./dist/index.d.cts",
@@ -30,8 +34,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["i18n", "ai", "translate", "cli"],
+  "author": "Dai Rui <work@dairui1.com>",
   "license": "ISC",
   "dependencies": {
     "@iarna/toml": "^2.2.5",
