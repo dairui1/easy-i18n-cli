@@ -16,7 +16,7 @@ npm install -g @easyi18n/cli
 
 # Using yarn
 yarn global add @easyi18n/cli
-tr
+
 # Using pnpm
 pnpm add -g @easyi18n/cli
 ```
@@ -96,3 +96,25 @@ easyi18n -l all
 - `-l, --locale`: Target locale (e.g., 'zh-CN', 'ja', 'ko') or 'all' for all locales
 - `-f, --file`: (Optional) Target file to translate
 - `-k, --key`: (Optional) Specific key to translate in the target file
+
+### Roadmap
+
+#### ✅ Completed Features
+- Basic CLI setup and configuration
+- Support for multiple configuration formats
+- Integration with OpenAI API for translations
+- File-based and key-based translation support
+- Multiple locale file formats support (JSON, TOML)
+- Concurrent translation processing
+- Custom LLM configuration options
+- Custom translation rules and glossary
+
+#### 🚀 Planned Features
+- Support for more translation providers
+- Translation memory and caching
+- Auto-detection of new translation keys
+- Real-time translation progress tracking
+- Translation quality validation
+- Translation cost estimation
+- Batch translation optimization
+- Web UI for translation management
